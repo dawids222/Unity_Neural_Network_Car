@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{11E0451F-1F00-3A5D-FC8C-FE229ED4B9C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -51,47 +52,41 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Controllers\AutonomicCarController.cs" />
-     <Compile Include="Assets\Scripts\Controllers\BrainController.cs" />
-     <Compile Include="Assets\Scripts\Controllers\CarController.cs" />
-     <Compile Include="Assets\Scripts\Controllers\ManualCarController.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Contract\IActivationFunction.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Contract\IInputFunction.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Contract\INeuralLayer.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Contract\INeuralLayerFactory.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Contract\INeuron.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Contract\ISynapse.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\ExportHelper.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\HelperNetwork.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\ImportHelper.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Dataset.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Network.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Neuron.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Sigmoid.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Synapse.cs" />
-     <Compile Include="Assets\Scripts\Serializers\ISerializer.cs" />
-     <Compile Include="Assets\Scripts\Serializers\XmlSerializer.cs" />
- <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.TestRunner">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
- </Reference>
- <Reference Include="nunit.framework">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Timeline">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.HoloLens">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
+    <Compile Include="Assets\Scripts\Controllers\AutonomicCarController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\BrainController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CarController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\ManualCarController.cs" />
+    <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\ExportHelper.cs" />
+    <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\HelperNetwork.cs" />
+    <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\ImportHelper.cs" />
+    <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Dataset.cs" />
+    <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Network.cs" />
+    <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Neuron.cs" />
+    <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Sigmoid.cs" />
+    <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Synapse.cs" />
+    <Compile Include="Assets\Scripts\Serializers\ISerializer.cs" />
+    <Compile Include="Assets\Scripts\Serializers\XmlSerializer.cs" />
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -101,5 +96,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
 </Project>

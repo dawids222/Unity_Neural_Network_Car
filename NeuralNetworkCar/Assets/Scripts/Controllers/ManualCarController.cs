@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeuralNetwork.NetworkModels;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -61,7 +62,8 @@ public class ManualCarController : CarController
     {
         using (var writer = File.AppendText(LearnignDataFileName))
         {
-            var expectedOutput = 0;
+            var expectedOutput = Sigmoid.Output(DistanceToRightWall - DistanceToLeftWall);
+            Debug.Log(expectedOutput);
             writer.WriteLine(string.Format("{0}{3}{1}{3}{2}", DistanceToLeftWall, DistanceToRightWall, expectedOutput, learningFileDelimiter));
             Debug.Log(DistanceToLeftWall + " " + DistanceToRightWall + " " + expectedOutput);
         }

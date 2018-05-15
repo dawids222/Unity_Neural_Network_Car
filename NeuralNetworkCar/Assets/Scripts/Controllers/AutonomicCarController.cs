@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AutonomicCarController : CarController
 {
+    [Header("Neural network holder")]
     // Odwołanie do obiektu z siecią neuronową
     public BrainController Brain;
 
@@ -26,18 +27,20 @@ public class AutonomicCarController : CarController
     private void simpleSteer()
     {
         var difference = DistanceToRightWall - DistanceToLeftWall;
-        if (difference > 1)
-            TurnRight();
-        else if (difference < -1)
-            TurnLeft();
+        makeDecision(difference, 1, -1);
     }
 
     private void neuralNetworkSteer()
     {
         var networkOutput = Brain.Compute(DistanceToLeftWall, DistanceToRightWall);
-        if (networkOutput > turnRightCondition)
+        makeDecision(networkOutput, turnRightCondition, turnLeftCondition);
+    }
+
+    private void makeDecision(double value, double turnRightCondition, double turnLeftCondition)
+    {
+        if (value > turnRightCondition)
             TurnRight();
-        else if (networkOutput < turnLeftCondition)
+        else if (value < turnLeftCondition)
             TurnLeft();
     }
 }
