@@ -51,24 +51,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AutonomicCarController.cs" />
-     <Compile Include="Assets\Scripts\BrainController.cs" />
-     <Compile Include="Assets\Scripts\CarController.cs" />
-     <Compile Include="Assets\Scripts\ManualCarController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\AutonomicCarController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\BrainController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\CarController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\ManualCarController.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork\Contract\IActivationFunction.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork\Contract\IInputFunction.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork\Contract\INeuralLayer.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork\Contract\INeuralLayerFactory.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork\Contract\INeuron.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork\Contract\ISynapse.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Implementation\InputSynapse.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Implementation\NeuralLayer.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Implementation\NeuralLayerFactory.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Implementation\Neuron.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Implementation\SimpleNeuralNetwork.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Implementation\Synapse.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Implementation\TangensHyperbolicusActivationFunction.cs" />
-     <Compile Include="Assets\Scripts\NeuralNetwork\Implementation\WeightedSumFunction.cs" />
+     <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\ExportHelper.cs" />
+     <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\HelperNetwork.cs" />
+     <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\ImportHelper.cs" />
+     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Dataset.cs" />
+     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Network.cs" />
+     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Neuron.cs" />
+     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Sigmoid.cs" />
+     <Compile Include="Assets\Scripts\NeuralNetwork\NetworkModels\Synapse.cs" />
+     <Compile Include="Assets\Scripts\Serializers\ISerializer.cs" />
+     <Compile Include="Assets\Scripts\Serializers\XmlSerializer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

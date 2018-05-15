@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 12373141}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 1.0430002, y: -0.1676774, z: -0.64676243}
+  m_LocalPosition: {x: 0.55, y: -0.1676774, z: -0.57}
   m_LocalScale: {x: 0.5873557, y: 0.11849605, z: 0.5601022}
   m_Children: []
   m_Father: {fileID: 789474955}
@@ -270,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 129665288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4730003, y: 0.010322571, z: -0.10676241}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.58303, z: 2.0822973}
   m_Children: []
   m_Father: {fileID: 789474955}
@@ -712,7 +712,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273565530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4730003, y: 0.18032217, z: -0.19676241}
+  m_LocalPosition: {x: 0, y: 0.18032217, z: -0.151}
   m_LocalScale: {x: 1, y: 1, z: 1.6549659}
   m_Children: []
   m_Father: {fileID: 789474955}
@@ -1112,7 +1112,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 483338061}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.1669997, y: -0.1676774, z: -0.64676243}
+  m_LocalPosition: {x: -0.55, y: -0.1676774, z: -0.583}
   m_LocalScale: {x: 0.5873557, y: 0.11849605, z: 0.5601022}
   m_Children: []
   m_Father: {fileID: 789474955}
@@ -1424,6 +1424,7 @@ MonoBehaviour:
   RotationSpeed: 50
   SensorLength: 150
   SensorAngle: 45
+  Brain: {fileID: 0}
 --- !u!114 &689292952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,6 +1443,9 @@ MonoBehaviour:
   UpKey: 119
   RightKey: 100
   LeftKey: 97
+  CollectLearningData: 0
+  CollectiongDataInterval: 0
+  LearnignDataFileName: 
 --- !u!54 &689292953
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1614,8 +1618,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2285843, y: 1.1118317, z: 2.0678015}
-  m_Center: {x: 0.44434547, y: 0.10705185, z: -0.11278391}
+  m_Size: {x: 1.2197865, y: 0.8780448, z: 2.0324745}
+  m_Center: {x: -0.0148119135, y: 0.06097762, z: -0.0033467612}
 --- !u!4 &789474955
 Transform:
   m_ObjectHideFlags: 0
@@ -1623,7 +1627,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 789474952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.5, y: 1.52, z: -8.3}
+  m_LocalPosition: {x: -32.1, y: 1.52, z: -8.3}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 129665289}
@@ -1653,6 +1657,9 @@ MonoBehaviour:
   UpKey: 119
   RightKey: 100
   LeftKey: 97
+  CollectLearningData: 0
+  CollectiongDataInterval: 0
+  LearnignDataFileName: 
 --- !u!114 &789474957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1664,10 +1671,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8579f8efe35b4f84284c3d37e851d68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 50
+  MovementSpeed: 25
   RotationSpeed: 300
   SensorLength: 150
   SensorAngle: 45
+  Brain: {fileID: 1157306495}
 --- !u!1 &1019989075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,6 +1867,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989004825775ed24ea47a8e8f33d21a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TrainOnInit: 1
+  LearningFileName: trainingData.sigmoid
+  LearnedNetworkFileName: network.xml
+  NumberOfEpochs: 100
 --- !u!4 &1157306496
 Transform:
   m_ObjectHideFlags: 0
@@ -2507,7 +2519,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1553630112}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.106999695, y: -0.1676774, z: 0.5922376}
+  m_LocalPosition: {x: -0.55, y: -0.1676774, z: 0.5922376}
   m_LocalScale: {x: 0.5873557, y: 0.11849605, z: 0.5601022}
   m_Children: []
   m_Father: {fileID: 789474955}
@@ -2586,6 +2598,7 @@ MonoBehaviour:
   RotationSpeed: 50
   SensorLength: 150
   SensorAngle: 45
+  Brain: {fileID: 0}
 --- !u!114 &1581097900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2604,6 +2617,9 @@ MonoBehaviour:
   UpKey: 119
   RightKey: 100
   LeftKey: 97
+  CollectLearningData: 0
+  CollectiongDataInterval: 0
+  LearnignDataFileName: 
 --- !u!54 &1581097901
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2674,7 +2690,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1646935887}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 1.0230002, y: -0.1676774, z: 0.5922376}
+  m_LocalPosition: {x: 0.55, y: -0.1676774, z: 0.5922376}
   m_LocalScale: {x: 0.5873557, y: 0.11849605, z: 0.5601022}
   m_Children: []
   m_Father: {fileID: 789474955}
