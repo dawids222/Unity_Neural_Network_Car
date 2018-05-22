@@ -16,7 +16,7 @@
 
 \begin{document}
 	
-	\title{Systemy Sztucznej Inteligencji\\\small{dokumentacja projektu XYZ}}
+	\title{Systemy Sztucznej Inteligencji\\\small{dokumentacja projektu Unity Neural Network Car}}
 	\author{Artur Bednarczyk, Dawid Grajewski, grupa A}
 	\date{\today}
 
@@ -25,7 +25,9 @@
 	\section*{Część I}
 	\subsection*{Opis programu}
 	Tutaj, nasz super opis, jaki ten program jest cudowny i superowy. Nikt nie ma tak fajnego autka, które tak fajnie pędzi przez super fajny tor.
-	Panie, inne autka tak nie pojadą jak nasze.
+	Panie, inne autka tak nie pojadą jak nasze. Niżej jakiś normalny opis się zacznie;// \\
+	
+	Unity Nueral Network Car jest symulacją jazdy samochodu na torze. Samochód jest autonomiczny, co oznacza, że użytkownik nie musi go kontrolować, pojedzie sam. Samochód został nauczony jak jeździć dzięki specjalnie zaprojektowanej sieci neuronowej, dzięki czemu może jeździć po naszym torze nie rozbijając się na każdym zakręcie.
 	\subsection*{Instrukcja obsługi}
 	Magia dzieje się sama. Nie musisz tego znać.
 	\subsection*{Dodatkowe informacje}
@@ -35,9 +37,14 @@
 	\subsection*{Opis działania} 
 	Tutaj uwzględniamy część matematyczną.
 	- serio? musimy?
-	No dobra, dodam tutaj te fajne wzorki jak np. ten cały sigmoid:
+	No dobra, dodam tutaj te fajne wzorki jak np. ten cały sigmoid, jako nasza funkcja aktywacji:
 	$$ S(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1} $$
-	Jakieś randomowe wzroki z randomowych tutoriali do AI (tam mają nawalone tych wzrów wiec coś tam damy.)
+	Jakieś randomowe wzroki z randomowych tutoriali do AI (tam mają nawalone tych wzrów wiec coś tam damy.) np. takie coś, to chyba uczenie perceptronu, czyli komórce dowalama sume wszystkich wartości pomnożonych przez wagi:
+	$$ \sum_{i=1}^{n}u_iw_i $$
+	
+	PROPAGACJA WSTECZNA \\
+	https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/ \\
+	xD\\
 	\subsection*{Algorytm}
 	mile widziany pseudokod z użyciem biblioteki \LaTeX
 	\\
