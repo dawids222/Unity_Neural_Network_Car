@@ -16,6 +16,13 @@
 \setlength{\topmargin}{0cm}
 \setlength{\headheight}{0cm}
 
+\lstset{
+    numbers=left,
+    breaklines=true,
+    tabsize=2,
+    basicstyle=\ttfamily,
+}
+
 \begin{document}
 	
 	\title{Systemy Sztucznej Inteligencji\\\small{dokumentacja projektu Unity Neural Network Car}}
@@ -69,78 +76,78 @@
 	Tutaj powinna pojawić się analiza uzyskanych wyników oraz wykresy/pomiary.
 	
 	No lekko, tutaj wleci super wykres nakodzony w pytonie. \\
-	\includegraphics[scale=0.5]{supa_wykres}
+	%\includegraphics[scale=0.5]{supa_wykres}
 	\newpage
 	\section*{Pełen kod aplikacji}
 	tutaj wklejamy pełen kod.\\ Dalej nie rozumiem sensu tego punktu. ale niech będzie. Pewnie wszystko będzie ważyło trochę zbyt dużo, żeby to wrzucić na platformę xD
 	\section*{Neuron}
 	\begin{lstlisting}
-	public class Neuron
+public class Neuron
+{
+	#region -- Properties --
+	public Guid Id { get; set; }
+	public List<Synapse> InputSynapses { get; set; }
+	public List<Synapse> OutputSynapses { get; set; }
+	public double Bias { get; set; }
+	public double BiasDelta { get; set; }
+	public double Gradient { get; set; }
+	public double Value { get; set; }
+	#endregion
+
+	#region -- Constructors --
+	public Neuron()
 	{
-		#region -- Properties --
-		public Guid Id { get; set; }
-		public List<Synapse> InputSynapses { get; set; }
-		public List<Synapse> OutputSynapses { get; set; }
-		public double Bias { get; set; }
-		public double BiasDelta { get; set; }
-		public double Gradient { get; set; }
-		public double Value { get; set; }
-		#endregion
-
-		#region -- Constructors --
-		public Neuron()
-		{
-			Id = Guid.NewGuid();
-			InputSynapses = new List<Synapse>();
-			OutputSynapses = new List<Synapse>();
-			Bias = Network.GetRandom();
-		}
-
-		public Neuron(IEnumerable<Neuron> inputNeurons) : this()
-		{
-			foreach (var inputNeuron in inputNeurons)
-			{
-				var synapse = new Synapse(inputNeuron, this);
-				inputNeuron.OutputSynapses.Add(synapse);
-				InputSynapses.Add(synapse);
-			}
-		}
-		#endregion
-
-		#region -- Values & Weights --
-		public virtual double CalculateValue()
-		{
-			return Value = Sigmoid.Output(InputSynapses.Sum(a => a.Weight * a.InputNeuron.Value) + Bias);
-		}
-
-		public double CalculateError(double target)
-		{
-			return target - Value;
-		}
-
-		public double CalculateGradient(double? target = null)
-		{
-			if (target == null)
-				return Gradient = OutputSynapses.Sum(a => a.OutputNeuron.Gradient * a.Weight) * Sigmoid.Derivative(Value);
-
-			return Gradient = CalculateError(target.Value) * Sigmoid.Derivative(Value);
-		}
-
-		public void UpdateWeights(double learnRate, double momentum)
-		{
-			var prevDelta = BiasDelta;
-			BiasDelta = learnRate * Gradient;
-			Bias += BiasDelta + momentum * prevDelta;
-
-			foreach (var synapse in InputSynapses)
-			{
-				prevDelta = synapse.WeightDelta;
-				synapse.WeightDelta = learnRate * Gradient * synapse.InputNeuron.Value;
-				synapse.Weight += synapse.WeightDelta + momentum * prevDelta;
-			}
-		}
-		#endregion
+		Id = Guid.NewGuid();
+		InputSynapses = new List<Synapse>();
+		OutputSynapses = new List<Synapse>();
+		Bias = Network.GetRandom();
 	}
+
+	public Neuron(IEnumerable<Neuron> inputNeurons) : this()
+	{
+		foreach (var inputNeuron in inputNeurons)
+		{
+			var synapse = new Synapse(inputNeuron, this);
+			inputNeuron.OutputSynapses.Add(synapse);
+			InputSynapses.Add(synapse);
+		}
+	}
+	#endregion
+
+	#region -- Values & Weights --
+	public virtual double CalculateValue()
+	{
+		return Value = Sigmoid.Output(InputSynapses.Sum(a => a.Weight * a.InputNeuron.Value) + Bias);
+	}
+
+	public double CalculateError(double target)
+	{
+		return target - Value;
+	}
+
+	public double CalculateGradient(double? target = null)
+	{
+		if (target == null)
+			return Gradient = OutputSynapses.Sum(a => a.OutputNeuron.Gradient * a.Weight) * Sigmoid.Derivative(Value);
+
+		return Gradient = CalculateError(target.Value) * Sigmoid.Derivative(Value);
+	}
+
+	public void UpdateWeights(double learnRate, double momentum)
+	{
+		var prevDelta = BiasDelta;
+		BiasDelta = learnRate * Gradient;
+		Bias += BiasDelta + momentum * prevDelta;
+
+		foreach (var synapse in InputSynapses)
+		{
+			prevDelta = synapse.WeightDelta;
+			synapse.WeightDelta = learnRate * Gradient * synapse.InputNeuron.Value;
+			synapse.Weight += synapse.WeightDelta + momentum * prevDelta;
+		}
+	}
+	#endregion
+}
 	\end{lstlisting}
 	
 	\section*{Synapse}
