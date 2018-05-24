@@ -44,12 +44,34 @@
 	\newpage
 	\section*{Część II}
 	\subsection*{Opis działania} 
-	Tutaj uwzględniamy część matematyczną.
-	- serio? musimy?
-	No dobra, dodam tutaj te fajne wzorki jak np. ten cały sigmoid, jako nasza funkcja aktywacji:
-	$$ S(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1} $$
-	Jakieś randomowe wzroki z randomowych tutoriali do AI (tam mają nawalone tych wzrów wiec coś tam damy.) np. takie coś, to chyba uczenie perceptronu, czyli komórce dowalama sume wszystkich wartości pomnożonych przez wagi:
-	$$ \sum_{i=1}^{n}u_iw_i $$
+\subsubsection*{Sieć neuronowa}
+Sieć neuronowa jest strukturą inspirowaną budową naturalnych neuronów, łączących je synaps oraz układów nerwowych. Wykorzystana w projekcie sieć jest wielowarstwową siecią jednokierunkową korzystającą z algorytmu propagacji wstecznej.
+\subsubsection*{Budowa sieci}
+Wykorzystana sieć składa się z trzech głównych warstw.
+\begin{itemize}
+	\item Warstwa wejścia.
+	\item Warstwy ukryte.
+	\item Warstwa wyjścia.
+\end{itemize}
+\paragraph*{Warstwa wejścia} Każdy neuron tej warstwy przekazuje do warstwy ukrytej początkowe wartości.
+\paragraph*{Warstwy ukryte} Tutaj dzieje się wszystko co najważniejsze. Neurony mają przypisane wagi, które początkowo są losowe. W ramach uczenia się, wagi są dostosowywane tak, aby rezultat końcowy był jak najbliżej spodziewanego.
+\paragraph*{Warstwa wyjścia} To tutaj nauczona już sieć daje nam wynik.
+\subsubsection*{Uczenie sieci}
+Uczenie sieci jest realizowane poprzez podanie jej zestawu danych wejściowych oraz spodziewanych wyników. W tym projekcie wykorzystano metody takie jak:
+\begin{itemize}
+\item Propagacja Wsteczna
+\item Biases
+\item Momentum
+\item Współczynnik uczenia
+\end{itemize}
+\paragraph*{Propagacja wsteczna} tutaj trochę o tym... będą wzory, będą opisy, będzie fajnie. 
+\paragraph*{Biases} tutaj trochę o tym...
+\paragraph*{Momentum} tutaj trochę o tym...
+\paragraph*{Współczynnik uczenia} tutaj trochę o tym...
+\subsubsection*{Funkcja Aktywacji}
+Wartość wyjścia neuronów jest oblicznaa za pomocą funkcji aktywacji. W tym projekcie została użyta funkcja sigmoidalna:
+$$ S(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1} $$
+
 	
 	PROPAGACJA WSTECZNA \\
 	https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/ \\
