@@ -52,7 +52,7 @@ Wykorzystana sieć składa się z trzech głównych warstw.
 	\item Warstwa wyjścia.
 \end{itemize}
 \paragraph*{Warstwa wejścia} Każdy neuron tej warstwy przekazuje do warstwy ukrytej początkowe wartości.
-\paragraph*{Warstwy ukryte} Tutaj dzieje się wszystko co najważniejsze. Neurony mają przypisane wagi, które początkowo są losowe. W ramach uczenia się, wagi są dostosowywane tak, aby rezultat końcowy był jak najbliżej spodziewanego.
+\paragraph*{Warstwy ukryte} Tutaj dzieje się wszystko co najważniejsze. Synapsy między neuronami mają przypisane wagi, które początkowo są losowe. W ramach uczenia się, wagi są dostosowywane tak, aby rezultat końcowy był jak najbliżej spodziewanego.
 \paragraph*{Warstwa wyjścia} To tutaj nauczona już sieć daje nam wynik.
 \subsubsection*{Uczenie sieci}
 Uczenie sieci jest realizowane poprzez podanie jej zestawu danych wejściowych oraz spodziewanych wyników. W tym projekcie wykorzystano metody takie jak:
@@ -70,23 +70,55 @@ Po każdej serii danych wejściowych, wynik jest sprawdzany z spodziewanym wynik
 $$ E = \sum{\frac{1}{2}(target - out)^2} $$
 gdzie $E$ to błąd, $target$ to spodziewane wyniki, $out$ to otrzymane wyniki.
 Celem propagacji wstecznej jest zminimalizowanie błędu. Wykorzystujemy do tego regułę łańcuchową, która pozwoli obliczyć pochodne funkcji złożonych.
+$$ \frac{\delta net_{o1}}{\delta w_5} \cdot \frac{\delta out_{o1}}{\delta net_{o1}} \cdot \frac{\delta E_{total}}{\delta out_{o1}} = \frac{\delta E_{total}}{\delta w_5} $$
 \begin{figure}[hp]
 \centering
-\includegraphics[]{backprop}
+\includegraphics[scale=0.7]{backprop}
+\caption{https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/}
 \end{figure}\\
-Następnie, wyznaczamy jak bardzo wynik $o_1$ zmienia się w odniesieniu do wejścia oraz do wag.
-\begin{figure}[hp]
+Następnie, wyznaczamy jak bardzo wynik $o_1$ zmienia się w odniesieniu do wejścia oraz do wag. 
+$$ \frac{\delta E_{total}}{\delta w_1}  = \frac{\delta E_{total}}{\delta out_{h1}} \cdot \frac{\delta out_{h1}}{\delta net_{h1}} \cdot \frac{\delta net_{h1}}{\delta w_1} \longrightarrow \frac{\delta E_{total}}{\delta out_{h1}} = \frac{\delta E_{o1}}{\delta out_{h1}} + \frac{\delta E_{o2}}{\delta out_{h1}}$$
+\begin{figure}[h]
 \centering
-\includegraphics[]{backprop2}
+\includegraphics[scale=0.50]{backprop2}
+\caption{https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/}
 \end{figure}\\
-
-\paragraph*{Biases} tutaj trochę o tym...
-\paragraph*{Momentum} tutaj trochę o tym...
-\paragraph*{Współczynnik uczenia} tutaj trochę o tym...
+Teraz, możemy zaktualizować wagi:
+$$ w_1^+ = w_1 - \eta \cdot \frac{\delta E_{total}}{\delta w_1}  $$
+gdzie $\eta$ to współczynnik uczenia.
+\paragraph*{Biases} Są to wartości, które pozwalają na przesunięcie funkcji aktywacji w sposób, na który zmiana wagi nie pozwala. Przykład funkcji bez bias:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{biases_01}
+\caption{https://stackoverflow.com/questions/2480650/role-of-bias-in-neural-networks}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{biases_03}
+\caption{https://stackoverflow.com/questions/2480650/role-of-bias-in-neural-networks}
+\end{figure}
+Przykład funkcji z bias:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{biases_02}
+\caption{https://stackoverflow.com/questions/2480650/role-of-bias-in-neural-networks}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{biases_04}
+\caption{https://stackoverflow.com/questions/2480650/role-of-bias-in-neural-networks}
+\end{figure}
+Wykorzystanie tego jest konieczne aby uczenie zostało zrealizowane z prawidłowymi wynikami.
+\paragraph*{Momentum} Jest to współczynnik odpowiadający za dodanie ułamka poprzedniej wagi do aktualnej. Używany jest aby zapobiec zbieżności do lokalnego minimum lub punktu siodłowego. Wysoka wartość tego współczynnika przyspiesza proces konwergencji, jednakże zbyt wysoka może spowodować, że cały system stanie się niestabilny, a zbyt niska spowolni proces uczenia.
+\paragraph*{Współczynnik uczenia} to współczynnik odpowiadający za to jak duże są zmiany wag oraz biasów.
 \subsubsection*{Funkcja Aktywacji}
-Wartość wyjścia neuronów jest oblicznaa za pomocą funkcji aktywacji. W tym projekcie została użyta funkcja sigmoidalna:
+Wartość wyjścia neuronów jest obliczana za pomocą funkcji aktywacji. W tym projekcie została użyta funkcja sigmoidalna:
 $$ S(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1} $$
-
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{sigmoid}
+\caption{https://en.wikipedia.org/wiki/Sigmoid\_function}
+\end{figure}
 	\subsection*{Algorytm}
 	mile widziany pseudokod z użyciem biblioteki \LaTeX
 	\\
