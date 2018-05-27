@@ -105,30 +105,7 @@ Uczenie sieci jest realizowane poprzez podanie jej zestawu danych wejściowych o
 \item Współczynnik uczenia
 \end{itemize}
 
-Początkowo wagi przy neuronach są losowe. Każdy z neuronów posiada swój blok sumujący, gdzie oblicz wartość sygnału:
-$$ \sum_{i=1}^{n}{w_i\cdot x_i + Bias} $$
-Gdzie $n$ to liczba wejść, $w$ to waga, $x$ to wartość wejściowa.
-\paragraph*{Propagacja wsteczna} 
-Po każdej serii danych wejściowych, wynik jest sprawdzany z spodziewanym wynikiem. Następnie błąd jest liczony wzorem:
-$$ E = \sum{\frac{1}{2}(target - out)^2} $$
-gdzie $E$ to błąd, $target$ to spodziewane wyniki, $out$ to otrzymane wyniki.
-Celem propagacji wstecznej jest zminimalizowanie błędu. Wykorzystujemy do tego regułę łańcuchową, która pozwoli obliczyć pochodne funkcji złożonych.
-$$ \frac{\delta net_{o1}}{\delta w_5} \cdot \frac{\delta out_{o1}}{\delta net_{o1}} \cdot \frac{\delta E_{total}}{\delta out_{o1}} = \frac{\delta E_{total}}{\delta w_5} $$
-\begin{figure}[hp]
-\centering
-\includegraphics[scale=0.7]{backprop}
-\caption{https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/}
-\end{figure}\\
-Następnie, wyznaczamy jak bardzo wynik $o_1$ zmienia się w odniesieniu do wejścia oraz do wag. 
-$$ \frac{\delta E_{total}}{\delta w_1}  = \frac{\delta E_{total}}{\delta out_{h1}} \cdot \frac{\delta out_{h1}}{\delta net_{h1}} \cdot \frac{\delta net_{h1}}{\delta w_1} \longrightarrow \frac{\delta E_{total}}{\delta out_{h1}} = \frac{\delta E_{o1}}{\delta out_{h1}} + \frac{\delta E_{o2}}{\delta out_{h1}}$$
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.50]{backprop2}
-\caption{https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/}
-\end{figure}\\
-Teraz, możemy zaktualizować wagi:
-$$ w_1^+ = w_1 + \eta \cdot \frac{\delta E_{total}}{\delta w_1}  $$
-gdzie $\eta$ to współczynnik uczenia.
+\paragraph*{Propagacja wsteczna} to podstawowy algorytm uczenia nadzorowanego wielowarstwowych, jednokierunkowych sieci neuronowych. Dzięki wstecznej propagacji błędu możemy dobrać odpowiednie wagi we wszystkich warstwach sieci. Początkowo dla losowych wag obliczane są błędy, czyli różnica między odpowiedzią obliczoną a spodziewaną, które następnie są propagowane do wcześniejszych warstw. Wagi zostają modyfikowane na podstawie błędu i obliczonych danych. Algorytm jest zostaje zatrzymany, gdy średnia wartość błędu przestanie maleć.
 \paragraph*{Biases} Są to wartości, które pozwalają na przesunięcie funkcji aktywacji w sposób, na który zmiana wagi nie pozwala. Przykład funkcji bez bias:
 \begin{figure}[H]
 \centering
