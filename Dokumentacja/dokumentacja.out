@@ -1,0 +1,28 @@
+\BOOKMARK [1][-]{section.1}{Czesc I}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Opis programu}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Instrukcja obs\233ugi}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Dodatkowe informacje}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Czesc II}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Opis dzia\233ania}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Siec neuronowa}{subsection.2.1}% 7
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Budowa sieci}{subsection.2.1}% 8
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Uczenie sieci}{subsection.2.1}% 9
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Funkcja Aktywacji}{subsection.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.2}{Algorytm}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.3}{Bazy danych}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.4}{Implementacja}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.5}{Testy}{section.2}% 14
+\BOOKMARK [1][-]{section.3}{Pe\233en kod aplikacji}{}% 15
+\BOOKMARK [2][-]{subsection.3.1}{Neuron}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.2}{Synapse}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.3}{Network}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.4}{Sigmoid}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.5}{Dataset}{section.3}% 20
+\BOOKMARK [2][-]{subsection.3.6}{ExportHelper}{section.3}% 21
+\BOOKMARK [2][-]{subsection.3.7}{ImportHelper}{section.3}% 22
+\BOOKMARK [2][-]{subsection.3.8}{Helpers}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.9}{Serializer}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.10}{CarController}{section.3}% 25
+\BOOKMARK [2][-]{subsection.3.11}{AutonomicCarController}{section.3}% 26
+\BOOKMARK [2][-]{subsection.3.12}{ManualCarController}{section.3}% 27
+\BOOKMARK [2][-]{subsection.3.13}{BrainController}{section.3}% 28

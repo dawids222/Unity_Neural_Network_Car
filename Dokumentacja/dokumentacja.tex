@@ -1,14 +1,25 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[polish]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[utf8x]{inputenc}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{listings}
-\usepackage{xcolor}
+%\usepackage{xcolor}
+\usepackage{color}
 \usepackage{float}
 \usepackage{multicol}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm,text width=4cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=4cm, draw=black, fill=orange!30]
+
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 \addtolength{\hoffset}{-1.5cm}
 \addtolength{\marginparwidth}{-1.5cm}
@@ -18,11 +29,35 @@
 \setlength{\topmargin}{0cm}
 \setlength{\headheight}{0cm}
 
-\lstset{
-    numbers=left,
-    breaklines=true,
-    tabsize=2,
-    basicstyle=\ttfamily,
+%\lstset{
+%    numbers=left,
+%    breaklines=true,
+%    tabsize=2,
+%    basicstyle=\ttfamily,
+%    frame=lr,
+%    rulecolor=\color{blue!80!black},
+%    language=[Sharp]C
+%}
+\definecolor{bluekeywords}{rgb}{0,0,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.64,0.08,0.08}
+\definecolor{xmlcomments}{rgb}{0.5,0.5,0.5}
+\definecolor{types}{rgb}{0.17,0.57,0.68}
+\lstset{language=[Sharp]C,
+captionpos=b,
+frame=lines,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+morekeywords={partial, var, value, get, set},
+keywordstyle=\color{bluekeywords},
+stringstyle=\color{redstrings},
+basicstyle=\ttfamily\small,
+tabsize=4,
 }
 
 \begin{document}
@@ -33,19 +68,25 @@
 
 	\maketitle
 	\newpage
-	\section*{Część I}
-	\subsection*{Opis programu}
+	\tableofcontents
+	\newpage
+	\section{Część I}
+	\subsection{Opis programu}
 	Unity Neural Network Car to symulacja samochodu poruszającego się po torze. Jednak nie tylko użytkownik może kontrolować pojazd, a również sztuczna inteligencja. Implementacja zaawansowanej technologii pozwoliła na ,,nauczenie'' samochodu w jaki sposób przejechać przez cały tor i nie rozbić się na najbliższym zakręcie.
-	\subsection*{Instrukcja obsługi}
+	\begin{figure}[H]
+	\includegraphics[scale=0.7]{car}
+	\centering
+	\end{figure}
+	\subsection{Instrukcja obsługi}
 	Uruchamiamy aplikację i możemy obserwować ruch pojazdu.
-	\subsection*{Dodatkowe informacje}
+	\subsection{Dodatkowe informacje}
 	Projekt został wykonany z wykorzystaniem silnika Unity oraz języka C\#.
 	\newpage
-	\section*{Część II}
-	\subsection*{Opis działania} 
-\subsubsection*{Sieć neuronowa}
+	\section{Część II}
+	\subsection{Opis działania} 
+\subsubsection{Sieć neuronowa}
 Sieć neuronowa jest strukturą inspirowaną budową naturalnych neuronów, łączących je synaps oraz układów nerwowych. Wykorzystana w projekcie sieć jest wielowarstwową siecią jednokierunkową korzystającą z algorytmu propagacji wstecznej.
-\subsubsection*{Budowa sieci}
+\subsubsection{Budowa sieci}
 Wykorzystana sieć składa się z trzech głównych warstw.
 \begin{itemize}
 	\item Warstwa wejścia.
@@ -55,7 +96,7 @@ Wykorzystana sieć składa się z trzech głównych warstw.
 \paragraph*{Warstwa wejścia} Każdy neuron tej warstwy przekazuje do warstwy ukrytej początkowe wartości.
 \paragraph*{Warstwy ukryte} Tutaj dzieje się wszystko co najważniejsze. Synapsy między neuronami mają przypisane wagi, które początkowo są losowe. W ramach uczenia się, wagi są dostosowywane tak, aby rezultat końcowy był jak najbliżej spodziewanego.
 \paragraph*{Warstwa wyjścia} To tutaj nauczona już sieć daje nam wynik.
-\subsubsection*{Uczenie sieci}
+\subsubsection{Uczenie sieci}
 Uczenie sieci jest realizowane poprzez podanie jej zestawu danych wejściowych oraz spodziewanych wyników. W tym projekcie wykorzystano metody takie jak:
 \begin{itemize}
 \item Propagacja Wsteczna
@@ -63,6 +104,7 @@ Uczenie sieci jest realizowane poprzez podanie jej zestawu danych wejściowych o
 \item Momentum
 \item Współczynnik uczenia
 \end{itemize}
+
 Początkowo wagi przy neuronach są losowe. Każdy z neuronów posiada swój blok sumujący, gdzie oblicz wartość sygnału:
 $$ \sum_{i=1}^{n}{w_i\cdot x_i - p} $$
 Gdzie $n$ to liczba wejść, $w$ to waga, $x$ to wartość wejściowa oraz $p$ to wartość progowa.
@@ -97,7 +139,7 @@ gdzie $\eta$ to współczynnik uczenia.
 \centering
 \includegraphics[scale=0.5]{biases_03}
 \caption{https://stackoverflow.com/questions/2480650/role-of-bias-in-neural-networks}
-\end{figure}
+\end{figure}\clearpage
 Przykład funkcji z bias:
 \begin{figure}[H]
 \centering
@@ -112,17 +154,37 @@ Przykład funkcji z bias:
 Wykorzystanie tego jest konieczne aby uczenie zostało zrealizowane z prawidłowymi wynikami.
 \paragraph*{Momentum} Jest to współczynnik odpowiadający za dodanie ułamka poprzedniej wagi do aktualnej. Używany jest aby zapobiec zbieżności do lokalnego minimum lub punktu siodłowego. Wysoka wartość tego współczynnika przyspiesza proces konwergencji, jednakże zbyt wysoka może spowodować, że cały system stanie się niestabilny, a zbyt niska spowolni proces uczenia.
 \paragraph*{Współczynnik uczenia} to współczynnik odpowiadający za to jak duże są zmiany wag oraz biasów.
-\subsubsection*{Funkcja Aktywacji}
+\subsubsection{Funkcja Aktywacji}
 Wartość wyjścia neuronów jest obliczana za pomocą funkcji aktywacji. W tym projekcie została użyta funkcja sigmoidalna:
 $$ S(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1} $$
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{sigmoid}
 \caption{https://en.wikipedia.org/wiki/Sigmoid\_function}
 \end{figure}
-	\subsection*{Algorytm}
-	mile widziany pseudokod z użyciem biblioteki \LaTeX
-	\subsection*{Bazy danych}
+Funkcja ta przyjmuje wartości od 0 do 1.
+	\subsection{Algorytm}
+	\begin{tikzpicture}[node distance=2cm]
+		\node (start) [startstop] {START};
+		\node (dec1) [decision, below of=start, yshift=-1.0cm]{Jeśli sieć nauczona.};
+		\node (in1) [io, left of=dec1, xshift=-4.3cm]{Pobranie danych treningowych};
+		\node (pro1) [process, below of=in1]{Uczenie sieci};
+		\node (out1) [io, below of=pro1]{Zapis danych};
+		\node (pro2) [process, below of=out1] {Podłączenie sieci do auta};
+		\node (pro3) [process, below of=pro2] {Auto jedzie.} ;
+		\node (stop) [startstop, below of=pro3] {STOP};
+		
+		
+		\draw [arrow](start) -- node {}(dec1);
+		\draw [arrow] (dec1) -- node[anchor=south] {Nie} (in1);
+		\draw [arrow] (dec1) |- node[anchor=west] {Tak} (pro2);
+		\draw [arrow] (in1) -- node {} (pro1);
+		\draw [arrow] (pro1) -- node {} (out1);
+		\draw [arrow] (out1) -- node {} (pro2);
+		\draw [arrow] (pro2) -- node {} (pro3);
+		\draw [arrow] (pro3) -- node {} (stop);
+	\end{tikzpicture}\clearpage
+	\subsection{Bazy danych}
 	Zestaw danych wykorzystany do uczenia sieci:
 	\begin{multicols}{3}
 	\begin{verbatim}
@@ -257,7 +319,7 @@ $$ S(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1} $$
 
 	\end{verbatim}
 	\end{multicols}
-	\subsection*{Implementacja}
+	\subsection{Implementacja}
 	Projekt powstał z wykorzystaniem narzędzi Unity. Funkcjonalność została zawarta w folderze Assets/Scripts, którego zawartość wygląda następująco:
 	\begin{itemize}
 	\item Controllers 
@@ -367,13 +429,13 @@ $$ S(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1} $$
 			\end{itemize}
 	\end{itemize}
 
-	\subsection*{Testy}
+	\subsection{Testy}
 	Sieć działa prawidłowo. Samochód porusza się po torze w sposób zadowalający.	\\
 	\paragraph{Wykres błędów}:\\
 	\includegraphics[scale=0.5]{supa_wykres}
 	\newpage
-	\section*{Pełen kod aplikacji}
-	\section*{Neuron}
+	\section{Pełen kod aplikacji}
+	\subsection{Neuron}
 	\begin{lstlisting}
 public class Neuron
 {
@@ -442,8 +504,8 @@ public class Neuron
 	#endregion
 }
 	\end{lstlisting}
-	
-	\section*{Synapse}
+	\clearpage
+	\subsection{Synapse}
 	\begin{lstlisting}
 	public class Synapse
 	{
@@ -469,7 +531,7 @@ public class Neuron
 	}
 	\end{lstlisting}
 	
-	\section*{Network}
+	\subsection{Network}
 	\begin{lstlisting}
 	public class Network
 	{
@@ -610,8 +672,8 @@ public class Neuron
 	}
 	#endregion
 	\end{lstlisting}
-	
-	\section*{Sigmoid}
+	\clearpage
+	\subsection{Sigmoid}
 	\begin{lstlisting}
 	public static class Sigmoid
 	{
@@ -627,7 +689,7 @@ public class Neuron
 	}
 	\end{lstlisting}
 	
-	\section*{Dataset}
+	\subsection{Dataset}
 	\begin{lstlisting}
 	public class DataSet
 	{
@@ -645,8 +707,8 @@ public class Neuron
 		#endregion
 	}
 	\end{lstlisting}
-	
-	\section*{ExportHelper}
+	\clearpage
+	\subsection{ExportHelper}
 	\begin{lstlisting}
 	public static class ExportHelper
 	{
@@ -764,7 +826,7 @@ public class Neuron
 	}
 	\end{lstlisting}
 	
-	\section*{ImportHelper}
+	\subsection{ImportHelper}
 	\begin{lstlisting}
 	public static class ImportHelper
 	{
@@ -859,7 +921,7 @@ public class Neuron
     }
 	\end{lstlisting}
 	
-	\section*{Helpers}
+	\subsection{Helpers}
 	\begin{lstlisting}
 	public class HelperNetwork
 	{
@@ -898,14 +960,13 @@ public class Neuron
 	}
 	\end{lstlisting}
 	
-	\section*{Serializer}
+	\subsection{Serializer}
 	\begin{lstlisting}
-	public interface ISerializer
+public interface ISerializer
 {
     void Serialize(HelperNetwork network, string filename);
     HelperNetwork Deserialize(string filename);
 }
-
 public class XmlSerializer : ISerializer
 {
     public HelperNetwork Deserialize(string filename)
@@ -916,8 +977,7 @@ public class XmlSerializer : ISerializer
             return serializer.Deserialize(reader) as HelperNetwork;
         }
     }
-
-    public void Serialize(HelperNetwork network, string filename)
+    public void Serialize(HelperNetwork network,string filename)
     {
         using (var writer = new StreamWriter(filename))
         {
@@ -927,8 +987,8 @@ public class XmlSerializer : ISerializer
     }
 }
 	\end{lstlisting}
-	
-	\section*{CarController}
+	\clearpage
+	\subsection{CarController}
 	\begin{lstlisting}
 	public abstract class CarController : MonoBehaviour
 {
@@ -990,8 +1050,8 @@ public class XmlSerializer : ISerializer
     }
 }
 	\end{lstlisting}
-	
-	\section*{AutonomicCarController}
+	\clearpage
+	\subsection{AutonomicCarController}
 	\begin{lstlisting}
 public class AutonomicCarController : CarController
 {
@@ -1009,18 +1069,15 @@ public class AutonomicCarController : CarController
         MoveForward();
         steer();
 	}
-
     private void steer()
     {
         neuralNetworkSteer();
     }
-
     private void simpleSteer()
     {
         var difference = DistanceToRightWall - DistanceToLeftWall;
         makeDecision(difference, 1, -1);
     }
-
     private void neuralNetworkSteer()
     {
         var networkOutput = Brain.Compute(DistanceToLeftWall, DistanceToRightWall);
@@ -1036,8 +1093,8 @@ public class AutonomicCarController : CarController
     }
 }
 	\end{lstlisting}
-	
-	\section*{ManualCarController}
+	\clearpage
+	\subsection{ManualCarController}
 	\begin{lstlisting}
 public class ManualCarController : CarController
 {
@@ -1104,7 +1161,7 @@ public class ManualCarController : CarController
 }
 	\end{lstlisting}
 	
-	\section*{BrainController}
+	\subsection{BrainController}
 	\begin{lstlisting}
 public class BrainController : MonoBehaviour
 {
