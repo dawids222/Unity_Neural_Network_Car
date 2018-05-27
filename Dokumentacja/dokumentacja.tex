@@ -164,6 +164,9 @@ $$ S(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1} $$
 \end{figure}
 Funkcja ta przyjmuje wartości od 0 do 1.
 	\subsection{Algorytm}
+	\begin{figure}[H]
+		\centering
+
 	\begin{tikzpicture}[node distance=2cm]
 		\node (start) [startstop] {START};
 		\node (dec1) [decision, below of=start, yshift=-1.0cm]{Jeśli sieć nauczona.};
@@ -183,7 +186,8 @@ Funkcja ta przyjmuje wartości od 0 do 1.
 		\draw [arrow] (out1) -- node {} (pro2);
 		\draw [arrow] (pro2) -- node {} (pro3);
 		\draw [arrow] (pro3) -- node {} (stop);
-	\end{tikzpicture}\clearpage
+	\end{tikzpicture}	\end{figure}\clearpage
+	
 	\subsection{Bazy danych}
 	Zestaw danych wykorzystany do uczenia sieci:
 	\begin{multicols}{3}
