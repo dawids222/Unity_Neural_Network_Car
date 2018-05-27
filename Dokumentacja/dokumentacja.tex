@@ -106,8 +106,8 @@ Uczenie sieci jest realizowane poprzez podanie jej zestawu danych wejściowych o
 \end{itemize}
 
 Początkowo wagi przy neuronach są losowe. Każdy z neuronów posiada swój blok sumujący, gdzie oblicz wartość sygnału:
-$$ \sum_{i=1}^{n}{w_i\cdot x_i - p} $$
-Gdzie $n$ to liczba wejść, $w$ to waga, $x$ to wartość wejściowa oraz $p$ to wartość progowa.
+$$ \sum_{i=1}^{n}{w_i\cdot x_i + Bias} $$
+Gdzie $n$ to liczba wejść, $w$ to waga, $x$ to wartość wejściowa.
 \paragraph*{Propagacja wsteczna} 
 Po każdej serii danych wejściowych, wynik jest sprawdzany z spodziewanym wynikiem. Następnie błąd jest liczony wzorem:
 $$ E = \sum{\frac{1}{2}(target - out)^2} $$
@@ -127,7 +127,7 @@ $$ \frac{\delta E_{total}}{\delta w_1}  = \frac{\delta E_{total}}{\delta out_{h1
 \caption{https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/}
 \end{figure}\\
 Teraz, możemy zaktualizować wagi:
-$$ w_1^+ = w_1 - \eta \cdot \frac{\delta E_{total}}{\delta w_1}  $$
+$$ w_1^+ = w_1 + \eta \cdot \frac{\delta E_{total}}{\delta w_1}  $$
 gdzie $\eta$ to współczynnik uczenia.
 \paragraph*{Biases} Są to wartości, które pozwalają na przesunięcie funkcji aktywacji w sposób, na który zmiana wagi nie pozwala. Przykład funkcji bez bias:
 \begin{figure}[H]
