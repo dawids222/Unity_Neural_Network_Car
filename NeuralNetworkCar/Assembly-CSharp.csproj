@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Controllers\AutonomicCarController.cs" />
      <Compile Include="Assets\Scripts\Controllers\BrainController.cs" />
      <Compile Include="Assets\Scripts\Controllers\CarController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\FollowingController.cs" />
      <Compile Include="Assets\Scripts\Controllers\ManualCarController.cs" />
      <Compile Include="Assets\Scripts\Controllers\QuitController.cs" />
      <Compile Include="Assets\Scripts\NeuralNetwork\Helpers\ExportHelper.cs" />
